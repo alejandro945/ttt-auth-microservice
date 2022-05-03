@@ -6,10 +6,10 @@
 
 **The Microservice architecture**: Is an architectural style that structures an application as a collection of services that are:
 
--Highly maintainable and testable
--Loosely coupled
--Independently deployable
--Organized around business capabilities
+- Highly maintainable and testable
+- Loosely coupled
+- Independently deployable
+- Organized around business capabilities
 
 Microservices approach is all about handling a complex system, but in order to do so, the approach introduces its own set of complexities and implementation challenges. which we will learn in the next part of this series!
 
@@ -39,7 +39,7 @@ Nest natively supports the microservice architectural style of development. In N
 npm i --save @nestjs/microservices
 ```
 
-**2-Instanttiate a Microservice**
+**2-Instantiate a Microservice**
 ```ts
 import { NestFactory } from '@nestjs/core';
 import { Transport, MicroserviceOptions } from '@nestjs/microservices';
@@ -55,4 +55,40 @@ async function bootstrap() {
   app.listen();
 }
 bootstrap();
+```
+
+### Clean Architecture 🧼
+
+![Screenshot](https://miro.medium.com/max/1400/1*0u-ekVHFu7Om7Z-VTwFHvg.png)
+This diagram is taken from the official article by Robert C. Martin.
+
+Each circle represents different areas of the software. The outermost layer is the lowest level of the software and as we move in deeper, the level will be higher. In general, as we move in deeper, the layer is less prone to change.
+
+## Folder Structure
+
+```bash
+ttt-auth-microservice
+  |- node_modules
+  |- src
+     |- application
+        |- config
+            |- environment.ts
+        |- app.ts
+     |- domain
+        |- models
+        |- use-cases
+           |- impl
+     |- infrastructure
+        |- driven-adapters
+           |- adapters
+           |- providers
+        |- entry-points
+           |- api
+     |- index.ts
+  |- tests
+     |- domain
+     |- infrastructure
+  .env
+  package.json
+  READMED.md
 ```
