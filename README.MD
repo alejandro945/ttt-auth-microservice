@@ -18,12 +18,12 @@ Microservices approach is all about handling a complex system, but in order to d
 | Resources | Description |
 | ------------- | - |
 | 🧶 **[Framework]** | New using Nest? Here's everything you need to know! |
-| 🧅 **[Clean Architecture]** | minimize the human resources required to build and maintain the required system. |
+| 🧅 **[Clean Architecture]** | Minimize the human resources required to build and maintain the required system. |
 | 🎉 **[Functional Guide]** | Build production ML pipelines with simple functions. |
 
 [Framework]: https://docs.nestjs.com/
-[Clean Architecture]: https://www.freecodecamp.org/news a-quick-introduction-to-clean-architecture-990c014448d2/
-
+[Clean Architecture]: https://www.freecodecamp.org/news/a-quick-introduction-to-clean-architecture-990c014448d2/
+[Functional Guide]: https://github.com/alejandro945
 
 ## Nest as Backend Framework 🐱
 
@@ -39,4 +39,20 @@ Nest natively supports the microservice architectural style of development. In N
 npm i --save @nestjs/microservices
 ```
 
-**2-**
+**2-Instanttiate a Microservice**
+```ts
+import { NestFactory } from '@nestjs/core';
+import { Transport, MicroserviceOptions } from '@nestjs/microservices';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    AppModule,
+    {
+      transport: Transport.TCP,
+    },
+  );
+  app.listen();
+}
+bootstrap();
+```
